@@ -1,0 +1,21 @@
+{
+  "name": "react-stages",
+  "version": "1.0.0",
+  "description": "📝 Staged records of learning React.",
+  "repository": "https://github.com/chioio/react-stages.git",
+  "author": "Tenn Chio",
+  "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/basic"
+  ],
+  "scripts": {
+    "dev:basic": "yarn workspace basic dev"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "eslint": "^7.17.0",
+    "eslint-plugin-react": "^7.22.0"
+  }
+}
