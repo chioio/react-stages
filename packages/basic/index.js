@@ -30,3 +30,17 @@ const element4 = (
 
 ReactDOM.render(getGreeting(user), document.getElementById('jsx'))
 
+// Rendering Elements
+function tick() {
+  const element = (
+    <div>
+      <h1>This is a timer example.</h1>
+      <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    </div>
+  )
+  ReactDOM.render(element, document.getElementById('clock'))
+}
+
+// 通过 setInterval() 重复执行 tick() 函数，重复调用 render() 渲染DOM
+setInterval(tick, 1000)
+

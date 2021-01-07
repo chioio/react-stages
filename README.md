@@ -27,3 +27,14 @@ const element = {
   }
 }
 ```
+
+
+
+### Rendering Elements
+
+与浏览器DOM元素不同，React元素是创建开销极小的普通对象。
+
+React元素是不可变的对象。一旦被创建，将无法更改它的子元素或者属性。
+
+
+
