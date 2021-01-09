@@ -1,8 +1,17 @@
 // Hello World
+/*
+ * =============
+ *  Hello World
+ * =============
+ */
 const element1 = <h1>Hello, world!</h1>
 ReactDOM.render(element1, document.getElementById('hello'))
 
-// JSX
+/*
+ * =====
+ *  JSX
+ * =====
+ */
 function formatName(user) {
   return user.firstName + ' ' + user.lastName
 }
@@ -30,7 +39,11 @@ const element4 = (
 
 ReactDOM.render(getGreeting(user), document.getElementById('jsx'))
 
-// Rendering Elements
+/*
+ * ====================
+ *  Rendering Elements
+ * ====================
+ */
 function tick() {
   const element = (
     <div>
@@ -41,9 +54,15 @@ function tick() {
   ReactDOM.render(element, document.getElementById('clock'))
 }
 
-// 通过 setInterval() 重复执行 tick() 函数，重复调用 render() 渲染DOM
+// Via `setInterval()` to repeat `tick()` function,
+// repeat calling `render()` to render DOM.
 setInterval(tick, 1000)
 
+/*
+ * ======================
+ *  Components and Props
+ * ======================
+ */
 // Components and Props
 function Welcome(props) {
   return <h1>Hello, {props.name}</h1>
@@ -85,4 +104,60 @@ function Comment(props) {
     </div>
   )
 }
+
+/*
+ * =====================
+ *  State and Lifecycle
+ * =====================
+ */
+function Clock2(props) {
+  return (
+    <div>
+      <h1>Hello, world!</h1>
+      <h2>It is {props.date.toLocaleTimeString()}</h2>
+    </div>
+  )
+}
+
+function tick2() {
+  ReactDOM.render(
+    <Clock2 date={new Date()} />,
+    document.getElementById('clock2')
+  )
+}
+
+setInterval(tick2, 1000)
+
+class Clock3 extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { date: new Date() }
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(() => this.tick(), 1000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.timerID)
+  }
+
+  tick() {
+    this.setState({
+      date: new Date()
+    })
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>Hello, world!</h1>
+        <h2>It is {this.state.date.toLocaleTimeString()}</h2>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Clock3 />, document.getElementById('clock3'))
 
