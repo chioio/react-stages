@@ -44,3 +44,45 @@ function tick() {
 // 通过 setInterval() 重复执行 tick() 函数，重复调用 render() 渲染DOM
 setInterval(tick, 1000)
 
+// Components and Props
+function Welcome(props) {
+  return <h1>Hello, {props.name}</h1>
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome name="Tom" />
+      <Welcome name="Sally" />
+      <Welcome name="Tenn" />
+    </div>
+  )
+}
+
+ReactDOM.render(<App />, document.getElementById('component'))
+
+function Avatar(props) {
+  return (
+    <img className="Avatar" src={props.user.avatarUrl} alt={props.user.name} />
+  )
+}
+
+function UserInfo(props) {
+  return (
+    <div className="UserInfo">
+      <Avatar user={props.user} />
+      <div className="UserInfo-name">{props.user.name}</div>
+    </div>
+  )
+}
+
+function Comment(props) {
+  return (
+    <div className="Comment">
+      <UserInfo user={props.author} />
+      <div className="Comment-text">{props.text}</div>
+      <div className="Comment-date">{formatDate(props.date)}</div>
+    </div>
+  )
+}
+
