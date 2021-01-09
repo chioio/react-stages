@@ -222,3 +222,26 @@ componentDidMount() {
 
 
 
+### Handling Events
+
+在 React 中不能通过返回 `false` 的方式阻止默认行为。必须显式的使用  `preventDefault`。
+
+```jsx
+function ActionLink() {
+  function handleClick(e) {
+    e.preventDefault()
+    console.log('The link was clicked.')
+  }
+  
+  return (
+  	<a href="#" onClick={ handleClick }>
+    	Click me
+    </a>
+  )
+}
+```
+
+> **⚠️: class 的方法默认不会绑定 `this`。**
+
+
+
