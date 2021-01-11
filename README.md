@@ -245,3 +245,56 @@ function ActionLink() {
 
 
 
+### Conditional Rendering
+
+#### Element Variables
+
+```jsx
+render() {
+  if (isLoggedIn) {
+  	button = <LogoutButton onClick={this.handleLogoutClick} />
+	} else {
+  	button = <LoginButton onClick={this.handleLoginClick} />
+	}
+  
+  return (
+  	<div>
+    	<Greeting isLogedIn={isLoggedIn} />
+      {button}
+    </div>
+  )
+}
+```
+
+#### Inline If with Logical && Operator
+
+```jsx
+render() {
+  const count = 0;
+  return (
+  	<div>
+    	{ count && <h1>Messages: {count}</h1> }
+    </div>
+  )
+}
+```
+
+#### Inline If-Else with Conditional Operator
+
+```jsx
+render() {
+  const isLoggedIn = this.state.isLoggedIn
+  return (
+  	<div>
+      The user is <b> {isLoggedIn ? 'currently' : 'not'}</b> logged in.
+    </div>
+  )
+}
+```
+
+#### Preventing Component from Rendering
+
+可以让 `render` 方法直接返回 `null`，而不进行任何渲染；这样并不影响组件的生命周期。
+
+
+

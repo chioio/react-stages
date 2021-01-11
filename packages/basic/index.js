@@ -216,3 +216,127 @@ class LoggingButton2 extends React.Component {
   }
 }
 
+/*
+ * =======================
+ *  Conditional Rendering
+ * =======================
+ */
+function UserGreeting(props) {
+  return <h1>Welcome back!</h1>
+}
+
+function GuestGreeting(props) {
+  return <h1>Please sign up.</h1>
+}
+
+function Greeting(props) {
+  const isLoggedIn = props.isLoggedIn
+  if (isLoggedIn) {
+    return <UserGreeting />
+  }
+  return <GuestGreeting />
+}
+
+function LoginButton(props) {
+  return <button onClick={props.onClick}>Login</button>
+}
+
+function LogoutButton(props) {
+  return <button onClick={props.onClick}>Logout</button>
+}
+class LoginControl extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { isLoggedIn: false }
+
+    this.handleLoginClick = this.handleLoginClick.bind(this)
+    this.handleLogoutClick = this.handleLogoutClick.bind(this)
+  }
+
+  handleLoginClick() {
+    this.setState({ isLoggedIn: true })
+  }
+
+  handleLogoutClick() {
+    this.setState({ isLoggedIn: false })
+  }
+
+  render() {
+    const isLoggedIn = this.state.isLoggedIn
+    // * Element Variables
+    // let button
+    // if (isLoggedIn) {
+    //   button = <LogoutButton onClick={this.handleLogoutClick} />
+    // } else {
+    //   button = <LoginButton onClick={this.handleLoginClick} />
+    // }
+
+    return (
+      <div>
+        <Greeting isLoggedIn={isLoggedIn} />
+        {
+          // button
+          // * Inline If-Else with Conditional Operator
+          isLoggedIn ? (
+            <LogoutButton onClick={this.handleLogoutClick} />
+          ) : (
+            <LoginButton onClick={this.handleLoginClick} />
+          )
+        }
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<LoginControl />, document.getElementById('login-control'))
+
+function LogicalAndOperator(props) {
+  const count = 0
+  return <div>{count && <h1>Message: {count}</h1>}</div>
+}
+
+ReactDOM.render(
+  <LogicalAndOperator />,
+  document.getElementById('logical-and-operator')
+)
+
+function WarningBanner(props) {
+  if (!props.warn) {
+    // * This does not affect the firing of the component's lifecycle methods.
+    // * For instance `componentDidUpdate` will still be called.
+    return null
+  }
+
+  return <div className="warning">Warning!</div>
+}
+
+class Page extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { showWarning: true }
+
+    this.handleToggleClick = this.handleToggleClick.bind(this)
+  }
+
+  handleToggleClick() {
+    this.setState((state) => ({
+      showWarning: !state.showWarning
+    }))
+  }
+
+  render() {
+    return (
+      <div>
+        <WarningBanner warn={this.state.showWarning} />
+        <button onClick={this.handleToggleClick}>
+          {this.state.showWarning ? 'Hide' : 'Show'}
+        </button>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(<Page />, document.getElementById('prevent-component-render'))
+
