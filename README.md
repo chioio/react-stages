@@ -298,3 +298,46 @@ render() {
 
 
 
+### Lists and Keys
+
+#### List
+
+通过 `map()` 函数映遍历组中元素。
+
+#### Key
+
+key 帮助 React 识别哪些元素改变了，比如添加或删除。
+
+key 会传递信息给 React，但不会传递给组件。如果组件中需要使用 key 属性的值，需要用其他属性名显式传递这个值：
+
+```jsx
+const content = posts.map((post) => (
+	<Post
+    key={post.id}
+    id={post.id}
+    title={post.title} />
+))
+```
+
+此处，`Post` 组件可以读出 `posts.id`，但不能读出 `posts.key`。
+
+#### Embedding map() in JSX
+
+JSX 允许在打括号中嵌入任何表达式，所以可以内联 `map()` 返回的结果：
+
+```jsx
+function NumberList(props) {
+  const numbers = props.numbers;
+  return (
+    <ul>
+      {numbers.map((number) => (
+        <ListItem key={number.toString()}
+          				 value={number} />
+      ))}
+    </ul>
+  )
+}
+```
+
+
+
