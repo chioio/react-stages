@@ -377,3 +377,13 @@ React 不会使用 `selected` 属性，通过在根 `select` 标签上使用 `va
 
 
 
+### Lifting State Up
+
+在 React 中，将多个组件中需要共享的 state 向上移动到他们的最近共同父组件中，便可实现共享 state。
+
+> 因为 `props` 是只读的，所以由 `props` 传入的状态无法通过 `setState()` 修改。
+>
+> 通过使用“受控组件”解决，与 DOM 中的 `<input>` 接受的 `value` 和 `onChange` 一样。
+
+
+
