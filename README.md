@@ -341,3 +341,39 @@ function NumberList(props) {
 
 
 
+### Forms
+
+#### Controlled Components
+
+在 HTML 中，表单元素（如 `<input>`、`<textarea>` 和 `select` 通常自己维护 state，并根据用户输入进行更新。而在 React 中，**可变状态（mutable state）**通常保存在组件的 state 属性中，并且只能通过使用 `setState()` 来更新。
+
+渲染表单的 React 组件还控制着用户输入过程中表单发生的操作。被 React 以这种方式控制取值的表单元素叫做**“受控组件”**。
+
+#### The textarea Tag
+
+在 React 中，`<textarea>` 使用 `value` 属性定义其文本。
+
+#### The select Tag
+
+React 不会使用 `selected` 属性，通过在根 `select` 标签上使用 `value` 属性。
+
+>**⚠️: 可以将数组传递到 `value` 属性中，以支持在 `select` 标签中选择多个选项：**
+>
+>```jsx
+><select multiple={true} value={['B', 'C']}
+>```
+
+#### The file input Tag
+
+```jsx
+<input type="file" />
+```
+
+因为它的 value 只读，所以它是 React 中的一个**非受控**组件。
+
+#### Handling Multiple Inputs
+
+为元素添加 `name` 属性，并让处理函数根据 `event.target.name` 的值选择要执行的操作。
+
+
+
