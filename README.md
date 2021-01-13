@@ -387,3 +387,40 @@ React 不会使用 `selected` 属性，通过在根 `select` 标签上使用 `va
 
 
 
+### Composition vs Inheritance
+
+#### Containment
+
+使用 `children` prop 将组件的子组件传递到渲染结果中：
+
+```jsx
+function FancyBorder(props) {
+  return (
+  	<div className={'FancyBorder FancyBorder-' + props.color}>
+    	{props.children}
+    </div>
+  )
+}
+```
+
+这使得别的组件可以通过 JSX 嵌套，将任意组件作为子组件传递给它们。
+
+```jsx
+function WelcomeDialog() {
+  return (
+  	<FancyBorder color="blue">
+      <h1 className="Dialog-title">
+        Welcome
+      </h1>
+      <p className="Dialog-message">
+        Thank you for visiting our spacecraft!
+      </p>
+    </FancyBorder>
+  )
+}
+```
+
+组件可以接受任意 props，包括基本数据类型，React 元素以及函数。
+
+
+
