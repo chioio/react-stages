@@ -9,10 +9,12 @@
   "workspaces": [
     "packages/basic",
     "packages/samples",
+    "packages/advanced"
   ],
   "scripts": {
     "dev:basic": "yarn workspace basic dev",
     "dev:sample": "yarn workspace samples dev",
+    "dev:advanced": "yarn workspace advanced start"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
