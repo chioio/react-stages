@@ -424,3 +424,59 @@ function WelcomeDialog() {
 
 
 
+## Advanced
+
+### Context
+
+#### API
+
+##### `React.createContext`
+
+```jsx
+const MyContext = React.createContext(defaultValue);
+```
+
+**只有**当组件所处的树中没有匹配到 Provider 时，其 `defaultValue` 参数才会生效。
+
+> 将 `undefined` 传递给 Provider 的 value 时，消费组件的 `defaultValue` 不会生效。
+
+##### `Context.Provider`
+
+```jsx
+<MyContext.Provider value={/* 某个值 */}></MyContext.Provider>
+```
+
+Provider 接受一个 `value` 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
+
+当 Provider 的 `value` 值发生变化时，它内部的所有消费组件都会重新渲染。
+
+* Provider 及其内部 consumer 组件都不受制于 `shouldComponentUpdate` 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
+
+##### `Class.contentType`
+
+挂载在 class 上的 `contextType` 属性会被重赋值为一个由 `React.createContext()` 创建的 Context 对象。
+
+使用 `public class fields` 语法可以通过 `static` 类属性来初始化 `contextType`。
+
+##### `Context.Consumer`
+
+```jsx
+<MyContext.Consumer>
+  {value => /* 基于 context 值进行渲染 */}
+</MyContext.Consumer>
+```
+
+##### `Context.displayName`
+
+context 对象接受一个名为 `displayName` 的 property，类型为字符串。
+
+```jsx
+const MyContext = React.createContext(/* some value */)
+MyContext.displayName = 'MyDisplayName';
+
+<MyContext.Provider></MyContext.Provider>
+<MyContext.Consumer></MyContext.Consumer>
+```
+
+
+
