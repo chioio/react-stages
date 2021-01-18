@@ -480,3 +480,24 @@ MyContext.displayName = 'MyDisplayName';
 
 
 
+### Error Boundaries
+
+错误边界是一种 React 组件，这种组件**可以捕获并打印发生在其子组件树任何位置的 JavaScript 错误，并且，它会渲染出备用 UI**，而不是渲染那些崩溃的子组件树。
+
+错误边界在渲染期间、生命周期方法和整个组件树的构造函数中捕获错误。
+
+> ⚠️ 错误边界**无法**捕获一下场景中产生的错误：
+>
+> * 事件处理
+> * 异步代码（`setTimeout` 或 `requestAnimationFrame` 回调函数）
+> * 服务端渲染
+> * 它自身抛出来的错误（并非它的子组件）
+
+* **错误边界仅可以捕获其子组件的错误。**如果一个错误边界无法渲染错误信息，则错误会冒泡至最近的上层错误边界，这也类似于 JavaScript 中 catch{} 的工作机制。
+
+#### New Behavior for Uncaught Errors
+
+**自 React 16 起，任何未被错误边界捕获的错误将会导致整个 React 组件树被卸载。**
+
+
+
