@@ -432,6 +432,16 @@ function WelcomeDialog() {
 
 ## Advanced
 
+### Accessibility
+
+#### Accessibility Forms
+
+##### Labeling
+
+所有的 HTML 表单控制都需要被标注来实现无障碍辅助功能。`<label>` 标签中的 `for` 在 JSX 中应该被写作 `htmlFor`。
+
+
+
 ### Context
 
 #### API
