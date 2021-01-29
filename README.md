@@ -517,3 +517,24 @@ MyContext.displayName = 'MyDisplayName';
 
 
 
+### Forwarding refs
+
+Ref 转发是一项将 ref 自动地通过组件传递到其一子组件的技巧。
+
+```jsx
+const FancyButton = React.forwardRef((props, ref) => (
+	<button ref={ref} className="FancyButton">
+    {props.children}
+  </button>
+))
+
+const ref = React.createRef();
+<FancyButton ref={ref}>Click me!</FancyButton>
+```
+
+> **NOTE**
+>
+> `ref` 参数只在使用 `React.forwardRef` 定义组件时存在。常规函数和 class 组件不接受 `ref` 参数，且 props 中也不存储在 `ref`。
+
+
+
