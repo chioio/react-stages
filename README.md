@@ -538,3 +538,11 @@ const ref = React.createRef();
 
 
 
+### Fragments
+
+Fragments 允许将子列表分组，而无需向 DOM 添加额外的节点。
+
+`<React.Fragment key={}>`, `<></>`
+
+
+
