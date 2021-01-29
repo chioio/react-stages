@@ -556,3 +556,13 @@ HOC 是一种基于 React 的组合特性而形成的设计模式。
 
 
 
+### Portals
+
+Portal 提供了一种将子节点渲染到存在于父组件以外的 DOM 节点的解决方案。
+
+```js
+ReactDOM.createPortal(child, container)
+```
+
+
+
